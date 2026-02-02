@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - PetCare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar bg-white shadow">
+        <div class="container flex justify-between items-center" style="padding-top: 1rem; padding-bottom: 1rem;">
+            <a asp-controller="Home" asp-action="Index" class="logo flex items-center gap-sm">
+                <i class="fa-solid fa-paw text-primary" style="font-size: 2rem;"></i>
+                <span style="font-size: 1.5rem; font-weight: 700; color: var(--text-color);">PetCare</span>
+            </a>
+            <ul class="nav-links flex gap-md hide-mobile">
+                <li><a asp-controller="Home" asp-action="Index" class="@(ViewContext.RouteData.Values["Action"]?.ToString() == "Index" && ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" ? "text-primary" : "")" style="font-weight: 600;">Home</a></li>
+                <li><a asp-controller="Home" asp-action="Services">Services</a></li>
+                <li><a asp-controller="Shop" asp-action="Index">Shop</a></li>
+                <li><a asp-controller="Home" asp-action="About">About Us</a></li>
+            </ul>
+            <div class="nav-actions flex gap-sm hide-mobile">
+                <a asp-controller="Shop" asp-action="Cart" class="btn btn-outline" style="border: none; font-size: 1.2rem;"><i class="fa-solid fa-cart-shopping"></i></a>
+                @if (User.Identity?.IsAuthenticated ?? false)
+                {
+                    <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline">Dashboard</a>
+                    <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-outline">Logout</button>
+                    </form>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Login" class="btn btn-outline">Login</a>
+                }
+                <a asp-controller="Booking" asp-action="Index" class="btn btn-primary">Book Now</a>
+            </div>
+            <button class="mobile-menu-btn hide-desktop" style="display: none;">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <footer style="background-color: var(--text-color); color: var(--white); padding: 3rem 0;">
+        <div class="container grid grid-cols-4 gap-lg">
+            <div>
+                <div class="flex items-center gap-sm" style="margin-bottom: 1rem;">
+                    <i class="fa-solid fa-paw text-primary" style="font-size: 1.5rem;"></i>
+                    <span style="font-size: 1.25rem; font-weight: 700;">PetCare</span>
+                </div>
+                <p style="color: #b2bec3;">Professional care for your beloved pets. We treat them like family.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul style="color: #b2bec3;">
+                    <li style="margin-bottom: 0.5rem;"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a asp-controller="Home" asp-action="Services">Services</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a asp-controller="Shop" asp-action="Index">Shop</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a asp-controller="Booking" asp-action="Index">Book Appointment</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul style="color: #b2bec3;">
+                    <li style="margin-bottom: 0.5rem;"><i class="fa-solid fa-phone"></i> (123) 456-7890</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fa-solid fa-envelope"></i> hello@petcare.com</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fa-solid fa-location-dot"></i> 123 Pet Street, City</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Hours</h4>
+                <ul style="color: #b2bec3;">
+                    <li style="margin-bottom: 0.5rem;">Mon - Fri: 8am - 8pm</li>
+                    <li style="margin-bottom: 0.5rem;">Sat: 9am - 6pm</li>
+                    <li style="margin-bottom: 0.5rem;">Sun: 10am - 4pm</li>
+                </ul>
+            </div>
+        </div>
+        <div class="container text-center" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #636e72; color: #636e72;">
+            &copy; 2026 PetCare Clinic. All rights reserved.
+        </div>
+    </footer>
+    
+    <script src="~/js/main.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

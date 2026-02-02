@@ -1,0 +1,35 @@
+@model PetProject.Application.DTOs.LoginDto
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container" style="max-width: 400px; padding: 4rem 1rem;">
+    <div class="card">
+        <h2 class="text-center text-primary" style="margin-bottom: 2rem;">Login</h2>
+        <form asp-action="Login" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div style="margin-bottom: 1rem;">
+                <label asp-for="Email" style="display: block; margin-bottom: 0.5rem;">Email</label>
+                <input asp-for="Email" class="input" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label asp-for="Password" style="display: block; margin-bottom: 0.5rem;">Password</label>
+                <input asp-for="Password" type="password" class="input" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label>
+                    <input asp-for="RememberMe" /> Remember Me
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+        </form>
+        <div class="text-center" style="margin-top: 1rem;">
+            <a asp-action="Register">Don't have an account? Register</a>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

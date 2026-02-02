@@ -1,0 +1,169 @@
+@model PetProject.Application.DTOs.BookingCreateDto
+@{
+    ViewData["Title"] = "Book Appointment";
+}
+
+<div class="container" style="max-width: 800px; padding: 4rem 1rem;">
+    <div class="card">
+        <h2 class="text-center text-primary" style="margin-bottom: 2rem;">Book an Appointment</h2>
+
+        <!-- Step Indicator -->
+        <div class="step-indicator">
+            <div class="step active" data-step="1">1</div>
+            <div class="step" data-step="2">2</div>
+            <div class="step" data-step="3">3</div>
+            <div class="step" data-step="4">4</div>
+        </div>
+
+        <form asp-action="Create" method="post" id="bookingForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <!-- Step 1: Select Pet -->
+            <div class="form-step active" id="step1">
+                <h3 class="text-center" style="margin-bottom: 1.5rem;">Who is this appointment for?</h3>
+                <div class="grid grid-cols-2 gap-md" style="margin-bottom: 2rem;">
+                    <!-- In real app, loop through user's pets -->
+                    <div class="card pet-select-card text-center" onclick="selectPet(this, 1)">
+                        <i class="fa-solid fa-dog" style="font-size: 3rem; color: var(--text-light); margin-bottom: 1rem;"></i>
+                        <h4>My Dog</h4>
+                    </div>
+                    <div class="card pet-select-card text-center" onclick="selectPet(this, 2)">
+                        <i class="fa-solid fa-cat" style="font-size: 3rem; color: var(--text-light); margin-bottom: 1rem;"></i>
+                        <h4>My Cat</h4>
+                    </div>
+                </div>
+                <input type="hidden" asp-for="PetId" id="selectedPetId" />
+                <span asp-validation-for="PetId" class="text-danger"></span>
+
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary" onclick="nextStep(2)">Next: Select Service</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Select Service -->
+            <div class="form-step" id="step2">
+                <h3 class="text-center" style="margin-bottom: 1.5rem;">What service do you need?</h3>
+                <div class="grid grid-cols-1 gap-sm" style="margin-bottom: 2rem;">
+                    <label class="card flex items-center gap-md" style="cursor: pointer;">
+                        <input type="radio" asp-for="ServiceId" value="1" checked>
+                        <div>
+                            <h4>Veterinary Consultation</h4>
+                            <p class="text-light" style="margin: 0;">General checkup, diagnosis</p>
+                        </div>
+                        <span class="text-primary" style="margin-left: auto; font-weight: 700;">$50</span>
+                    </label>
+                    <label class="card flex items-center gap-md" style="cursor: pointer;">
+                        <input type="radio" asp-for="ServiceId" value="2">
+                        <div>
+                            <h4>Vaccination</h4>
+                            <p class="text-light" style="margin: 0;">Annual shots, rabies</p>
+                        </div>
+                        <span class="text-primary" style="margin-left: auto; font-weight: 700;">$30</span>
+                    </label>
+                </div>
+                <span asp-validation-for="ServiceId" class="text-danger"></span>
+
+                <div class="flex justify-between">
+                    <button type="button" class="btn btn-outline" onclick="prevStep(1)">Back</button>
+                    <button type="button" class="btn btn-primary" onclick="nextStep(3)">Next: Date & Time</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Date & Time -->
+            <div class="form-step" id="step3">
+                <h3 class="text-center" style="margin-bottom: 1.5rem;">When should we see you?</h3>
+                <div class="grid grid-cols-2 gap-md" style="margin-bottom: 2rem;">
+                    <div>
+                        <label asp-for="Date" style="display: block; margin-bottom: 0.5rem;">Date</label>
+                        <input asp-for="Date" type="date" class="input">
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="TimeSlot" style="display: block; margin-bottom: 0.5rem;">Time</label>
+                        <select asp-for="TimeSlot" class="input">
+                            <option value="09:00 AM">09:00 AM</option>
+                            <option value="10:00 AM">10:00 AM</option>
+                            <option value="11:00 AM">11:00 AM</option>
+                            <option value="02:00 PM">02:00 PM</option>
+                            <option value="03:00 PM">03:00 PM</option>
+                            <option value="04:00 PM">04:00 PM</option>
+                        </select>
+                        <span asp-validation-for="TimeSlot" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="flex justify-between">
+                    <button type="button" class="btn btn-outline" onclick="prevStep(2)">Back</button>
+                    <button type="button" class="btn btn-primary" onclick="nextStep(4)">Next: Confirm</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Confirm -->
+            <div class="form-step" id="step4">
+                <h3 class="text-center" style="margin-bottom: 1.5rem;">Confirm Appointment</h3>
+                <div class="card" style="background-color: #f9f9f9; margin-bottom: 2rem;">
+                    <div class="flex justify-between" style="margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
+                        <span class="text-light">Pet ID</span>
+                        <strong id="confirmPet">Selected</strong>
+                    </div>
+                    <div class="flex justify-between" style="margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
+                        <span class="text-light">Service ID</span>
+                        <strong id="confirmService">Selected</strong>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-light">Total Price</span>
+                        <strong class="text-primary" style="font-size: 1.25rem;">$50.00</strong>
+                    </div>
+                </div>
+                <div class="flex justify-between">
+                    <button type="button" class="btn btn-outline" onclick="prevStep(3)">Back</button>
+                    <button type="submit" class="btn btn-primary">Confirm Booking</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <style>
+        .step-indicator { display: flex; justify-content: space-between; margin-bottom: 2rem; position: relative; }
+        .step-indicator::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 2px; background: #e0e0e0; z-index: 0; transform: translateY(-50%); }
+        .step { width: 40px; height: 40px; background: #fff; border: 2px solid #e0e0e0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; color: #b2bec3; position: relative; z-index: 1; transition: all 0.3s; }
+        .step.active, .step.completed { border-color: var(--primary-color); background: var(--primary-color); color: #fff; }
+        .form-step { display: none; }
+        .form-step.active { display: block; animation: fadeIn 0.5s; }
+        @@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .pet-select-card { border: 2px solid #e0e0e0; cursor: pointer; }
+        .pet-select-card.selected { border-color: var(--primary-color); background-color: #e0f7fa; }
+    </style>
+    <script>
+        function selectPet(element, id) {
+            document.querySelectorAll('.pet-select-card').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            document.getElementById('selectedPetId').value = id;
+            document.getElementById('confirmPet').innerText = id;
+        }
+        
+        function nextStep(step) {
+            document.querySelectorAll('.form-step').forEach(el => el.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+            
+            document.querySelectorAll('.step').forEach(el => {
+                if(parseInt(el.dataset.step) < step) el.classList.add('completed');
+                if(parseInt(el.dataset.step) == step) el.classList.add('active');
+            });
+        }
+
+        function prevStep(step) {
+            document.querySelectorAll('.form-step').forEach(el => el.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+            
+            document.querySelectorAll('.step').forEach(el => {
+                if(parseInt(el.dataset.step) > step) {
+                    el.classList.remove('active');
+                    el.classList.remove('completed');
+                }
+            });
+        }
+    </script>
+    <partial name="_ValidationScriptsPartial" />
+}

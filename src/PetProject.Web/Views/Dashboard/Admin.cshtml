@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+    Layout = "_Layout"; // Or _AdminLayout if we created one
+}
+
+<div class="container" style="padding: 4rem 0;">
+    <h2 class="text-primary">Admin Dashboard</h2>
+    <p>Welcome, Admin!</p>
+
+    <div class="grid grid-cols-4 gap-md" style="margin-top: 2rem;">
+        <div class="card">
+            <h3>Users</h3>
+            <p class="text-light">Manage system users.</p>
+            <a href="#" class="btn btn-outline btn-sm">View Users</a>
+        </div>
+        <div class="card">
+            <h3>Products</h3>
+            <p class="text-light">Manage shop products.</p>
+            <a href="#" class="btn btn-outline btn-sm">View Products</a>
+        </div>
+        <div class="card">
+            <h3>Services</h3>
+            <p class="text-light">Manage veterinary services.</p>
+            <a href="#" class="btn btn-outline btn-sm">View Services</a>
+        </div>
+        <div class="card">
+            <h3>Appointments</h3>
+            <p class="text-light">View all appointments.</p>
+            <a href="#" class="btn btn-outline btn-sm">View All</a>
+        </div>
+    </div>
+</div>

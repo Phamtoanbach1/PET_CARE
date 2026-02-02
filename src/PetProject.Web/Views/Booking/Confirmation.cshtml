@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Booking Confirmed";
+}
+
+<div class="container text-center" style="padding: 6rem 1rem;">
+    <div class="card" style="max-width: 500px; margin: 0 auto;">
+        <i class="fa-solid fa-circle-check text-success" style="font-size: 4rem; margin-bottom: 1.5rem;"></i>
+        <h2 class="text-primary">Booking Confirmed!</h2>
+        <p style="margin-bottom: 2rem;">Your appointment has been successfully booked. We have sent a confirmation email to your inbox.</p>
+        <div class="flex justify-center gap-sm">
+            <a asp-controller="Dashboard" asp-action="Index" class="btn btn-primary">Go to Dashboard</a>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-outline">Back to Home</a>
+        </div>
+    </div>
+</div>

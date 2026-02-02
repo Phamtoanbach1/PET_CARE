@@ -1,0 +1,44 @@
+@model IEnumerable<PetProject.Domain.Entities.Appointment>
+@{
+    ViewData["Title"] = "My Dashboard";
+}
+
+<div class="container" style="padding: 4rem 0;">
+    <h2 class="text-primary">My Dashboard</h2>
+    
+    <div class="grid grid-cols-3 gap-lg" style="margin-top: 2rem;">
+        <div class="col-span-2">
+            <h3 style="margin-bottom: 1rem;">My Appointments</h3>
+            @if (Model != null && Model.Any())
+            {
+                <div class="grid gap-md">
+                    @foreach (var item in Model)
+                    {
+                        <div class="card flex justify-between items-center">
+                            <div>
+                                <h4>@item.Service?.Name</h4>
+                                <p class="text-light">@item.Date.ToShortDateString() at @item.TimeSlot</p>
+                                <span class="badge badge-primary">@item.Status</span>
+                            </div>
+                            <div>
+                                <p><strong>Pet:</strong> @item.Pet?.Name</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <p>You have no upcoming appointments.</p>
+                <a asp-controller="Booking" asp-action="Index" class="btn btn-primary">Book Now</a>
+            }
+        </div>
+        <div>
+            <div class="card">
+                <h3>My Pets</h3>
+                <p class="text-light">Manage your pets profiles.</p>
+                <button class="btn btn-outline btn-sm" style="width: 100%;">Add New Pet</button>
+            </div>
+        </div>
+    </div>
+</div>

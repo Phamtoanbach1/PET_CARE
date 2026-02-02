@@ -1,0 +1,12 @@
+E:\File_Project_TongHop\PET_BE\src\PetProject.Domain\bin\Debug\net10.0\PetProject.Domain.deps.json
+E:\File_Project_TongHop\PET_BE\src\PetProject.Domain\bin\Debug\net10.0\PetProject.Domain.dll
+E:\File_Project_TongHop\PET_BE\src\PetProject.Domain\bin\Debug\net10.0\PetProject.Domain.pdb
+E:\File_Project_TongHop\PET_BE\src\PetProject.Domain\obj\Debug\net10.0\PetProject.Domain.csproj.AssemblyReference.cache
+E:\File_Project_TongHop\PET_BE\src\PetProject.Domain\obj\Debug\net10.0\PetProject.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\File_Project_TongHop\PET_BE\src\PetProject.Domain\obj\Debug\net10.0\PetProject.Domain.AssemblyInfoInputs.cache
+E:\File_Project_TongHop\PET_BE\src\PetProject.Domain\obj\Debug\net10.0\PetProject.Domain.AssemblyInfo.cs
+E:\File_Project_TongHop\PET_BE\src\PetProject.Domain\obj\Debug\net10.0\PetProject.Domain.csproj.CoreCompileInputs.cache
+E:\File_Project_TongHop\PET_BE\src\PetProject.Domain\obj\Debug\net10.0\PetProject.Domain.dll
+E:\File_Project_TongHop\PET_BE\src\PetProject.Domain\obj\Debug\net10.0\refint\PetProject.Domain.dll
+E:\File_Project_TongHop\PET_BE\src\PetProject.Domain\obj\Debug\net10.0\PetProject.Domain.pdb
+E:\File_Project_TongHop\PET_BE\src\PetProject.Domain\obj\Debug\net10.0\ref\PetProject.Domain.dll

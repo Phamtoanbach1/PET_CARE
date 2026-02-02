@@ -1,0 +1,106 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- Hero Section -->
+<header class="hero" style="background: linear-gradient(135deg, #e0f7fa 0%, #fff 100%); padding: 4rem 0;">
+    <div class="container grid grid-cols-2 items-center gap-lg">
+        <div class="hero-content">
+            <h1 style="margin-bottom: 1.5rem;">Professional Care for Your Furry Friends</h1>
+            <p style="font-size: 1.25rem; margin-bottom: 2rem;">We provide top-notch veterinary services, grooming, and pet care products to keep your pets happy and healthy.</p>
+            <div class="flex gap-sm">
+                <a asp-controller="Booking" asp-action="Index" class="btn btn-primary">Book Appointment</a>
+                <a asp-controller="Home" asp-action="Services" class="btn btn-outline">View Services</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Happy Dog" class="rounded shadow" style="width: 100%; height: auto;">
+        </div>
+    </div>
+</header>
+
+<!-- Services Preview -->
+<section class="services section" style="padding: 4rem 0;">
+    <div class="container">
+        <div class="text-center" style="margin-bottom: 3rem;">
+            <h2 class="text-primary">Our Services</h2>
+            <p>Comprehensive care for every stage of your pet's life</p>
+        </div>
+        <div class="grid grid-cols-4 gap-md">
+            <!-- Service 1 -->
+            <div class="card text-center">
+                <div class="icon-box" style="width: 60px; height: 60px; background: #e0f7fa; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                    <i class="fa-solid fa-user-doctor text-primary" style="font-size: 1.5rem;"></i>
+                </div>
+                <h3>Consultation</h3>
+                <p>Expert veterinary checkups and diagnosis.</p>
+            </div>
+            <!-- Service 2 -->
+            <div class="card text-center">
+                <div class="icon-box" style="width: 60px; height: 60px; background: #fff3e0; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                    <i class="fa-solid fa-syringe text-secondary" style="font-size: 1.5rem;"></i>
+                </div>
+                <h3>Vaccination</h3>
+                <p>Essential shots to keep them safe.</p>
+            </div>
+            <!-- Service 3 -->
+            <div class="card text-center">
+                <div class="icon-box" style="width: 60px; height: 60px; background: #f3e5f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                    <i class="fa-solid fa-scissors" style="color: #9c27b0; font-size: 1.5rem;"></i>
+                </div>
+                <h3>Grooming</h3>
+                <p>Bathing, styling, and spa treatments.</p>
+            </div>
+            <!-- Service 4 -->
+            <div class="card text-center">
+                <div class="icon-box" style="width: 60px; height: 60px; background: #e8f5e9; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                    <i class="fa-solid fa-hotel" style="color: #4caf50; font-size: 1.5rem;"></i>
+                </div>
+                <h3>Pet Hotel</h3>
+                <p>Safe and comfortable boarding.</p>
+            </div>
+        </div>
+        <div class="text-center" style="margin-top: 2rem;">
+            <a asp-controller="Home" asp-action="Services" class="btn btn-outline">See All Services</a>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials" style="background-color: #fff; padding: 4rem 0;">
+    <div class="container">
+        <h2 class="text-center text-primary" style="margin-bottom: 3rem;">Happy Parents</h2>
+        <div class="grid grid-cols-3 gap-md">
+            <div class="card">
+                <p style="font-style: italic; margin-bottom: 1rem;">"The best clinic in town! Dr. Smith was so gentle with my nervous cat."</p>
+                <div class="flex items-center gap-sm">
+                    <div style="width: 40px; height: 40px; background: #ddd; border-radius: 50%;"></div>
+                    <div>
+                        <strong>Sarah J.</strong>
+                        <p style="font-size: 0.8rem; margin: 0;">Cat Owner</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <p style="font-style: italic; margin-bottom: 1rem;">"Great grooming service. My dog looks amazing and smells great!"</p>
+                <div class="flex items-center gap-sm">
+                    <div style="width: 40px; height: 40px; background: #ddd; border-radius: 50%;"></div>
+                    <div>
+                        <strong>Mike T.</strong>
+                        <p style="font-size: 0.8rem; margin: 0;">Dog Owner</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <p style="font-style: italic; margin-bottom: 1rem;">"Very professional and clean facility. Highly recommended."</p>
+                <div class="flex items-center gap-sm">
+                    <div style="width: 40px; height: 40px; background: #ddd; border-radius: 50%;"></div>
+                    <div>
+                        <strong>Emily R.</strong>
+                        <p style="font-size: 0.8rem; margin: 0;">Rabbit Owner</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

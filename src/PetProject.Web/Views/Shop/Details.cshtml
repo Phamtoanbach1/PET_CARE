@@ -1,0 +1,34 @@
+@model PetProject.Application.DTOs.ProductListDto
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="container" style="padding: 4rem 0;">
+    <div class="grid grid-cols-2 gap-lg">
+        <div>
+            <img src="@Model.ImageUrl" alt="@Model.Name" class="rounded shadow" style="width: 100%; height: auto; object-fit: cover;">
+        </div>
+        <div>
+            <h1 class="text-primary" style="margin-bottom: 1rem;">@Model.Name</h1>
+            <p class="text-light" style="font-size: 1.25rem; margin-bottom: 2rem;">@Model.Category</p>
+            
+            <div class="price" style="font-size: 2rem; font-weight: 700; color: var(--primary-color); margin-bottom: 2rem;">
+                $@Model.Price
+            </div>
+
+            <p style="margin-bottom: 2rem;">@Model.Description</p>
+
+            <div class="flex gap-sm items-center" style="margin-bottom: 2rem;">
+                <input type="number" value="1" min="1" class="input" style="width: 80px;">
+                <button class="btn btn-primary"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+            </div>
+
+            <div class="card" style="background-color: #f9f9f9;">
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 0.5rem;"><i class="fa-solid fa-truck"></i> Free shipping on orders over $50</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fa-solid fa-rotate-left"></i> 30-day return policy</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
